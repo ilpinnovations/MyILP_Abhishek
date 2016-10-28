@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:ProgressWheel="http://schemas.android.com/apk/res-auto"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical">
+
+    <SurfaceView
+        android:id="@+id/preview"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_weight="1"></SurfaceView>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@android:color/white">
+
+
+
+        <com.ilp.ilpschedule.fit4life.ProgressWheel
+            android:id="@+id/pw_spinner"
+            android:layout_width="350dp"
+            android:layout_height="350dp"
+            android:layout_below="@+id/image"
+            android:layout_centerHorizontal="true"
+            ProgressWheel:barColor="#FFFFBE7A"
+            ProgressWheel:barLength="60dp"
+            ProgressWheel:barWidth="20dp"
+            ProgressWheel:rimColor="#FFFF8800"
+            ProgressWheel:rimWidth="2dp"
+            ProgressWheel:text="0"
+            ProgressWheel:textColor="#222"
+            ProgressWheel:textSize="22sp" />
+
+        <TextView
+            android:id="@+id/txt_average"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/pw_spinner"
+            android:gravity="center"
+            android:text="--"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/textView6"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignTop="@+id/txt_average"
+            android:gravity="center"
+            android:text="
+Hold your finger until progress reaches 100 %"
+            android:textSize="15sp"
+            android:textStyle="italic" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/pw_spinner"
+            android:layout_alignStart="@+id/pw_spinner"
+            android:layout_below="@+id/textView6"
+            android:layout_marginTop="20dp"
+            android:orientation="horizontal">
+
+            <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="70dp"
+                android:src="@drawable/graphic2" />
+
+            <TextView
+                android:id="@+id/onclickgraph"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="10dp"
+                android:text="Show graph details"
+                android:textColor="#000"
+                android:textSize="28sp" />
+        </LinearLayout>
+    </RelativeLayout>
+</FrameLayout>
+

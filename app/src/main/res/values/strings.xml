@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">My ILP</string>
+    <string name="list_empty_notification">No notifications</string>
+    <string name="list_empty_schedule">No schedule</string>
+    <string name="list_empty_contacts">No Contacts</string>
+    <string name="list_empty_badges">Leaderboard is empty</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <!-- General -->
+    <string name="title_activity_video">VideoActivity</string>
+    <string name="title_activity_ilpinnovations">ILpinnovations</string>
+    <string name="title_activity_casestudy">Casestudy</string>
+
+
+    <!-- Badges -->
+    <string name="badge_karma_warrior">Congratulations!\nYou won the Feedback Karma Warrior badge.\nYou earn </string>
+    <string name="badge_karma_empower">Congratulations!\nYou won the Feedback Karma Empower badge.\nYou earn </string>
+    <string name="badge_karma_leader">Congratulations!\nYou won the Feedback Karma Leader badge.\nYou earn </string>
+    <string name="badge_karma_king">Congratulations!\nYou won the Feedback Karma king badge.\nYou earn </string>
+    <string name="badge_points">points</string>
+    <string name="badge_item_points">Points: </string>
+    <string name="badge_you_need">You need </string>
+    <string name="badge_you_earn">You earn </string>
+    <string name="badge_more_for_warrior"> points more to win the Feedback Karma Warrior badge.</string>
+    <string name="badge_more_for_empower"> points more to win the Feedback Karma Empower badge.</string>
+    <string name="badge_more_for_leader"> points more to win the Feedback Karma Leader badge.</string>
+    <string name="badge_more_for_king"> points more to win the Feedback Karma King badge.</string>
+
+    <!-- Menu -->
+    <string name="action_refresh">Refresh</string>
+    <string name="action_logout">Logout</string>
+    <string name="action_help">Help</string>
+
+    <!-- Login AndArActivity -->
+    <string name="location">Location</string>
+    <string name="login">Login</string>
+    <string name="send">Send</string>
+
+    <!-- Labels -->
+    <string name="label_rating">Rating</string>
+
+    <!-- Hints -->
+    <string name="hint_name">Name</string>
+    <string name="hint_email">Email (Official)</string>
+    <string name="hint_employeeId">Employee ID</string>
+    <string name="hint_faculty">Faculty</string>
+    <string name="hint_course">Course</string>
+    <string name="hint_search">Search  ATM, Bank or Hospital</string>
+    <string name="hint_comment">Comment</string>
+    <string name="hint_lg">Learning Group (LG)</string>
+
+    <!-- Drawer open close headers -->
+
+    <!-- Titles -->
+    <string name="title_schedule">Schedule</string>
+    <string name="title_badges">Badges</string>
+    <string name="title_feedback">Feedback</string>
+    <string name="title_location">Location</string>
+    <string name="title_contacts">Emergency Contacts</string>
+    <string name="title_notification">Notifications</string>
+
+    <!-- Slot Item -->
+
+    <!-- Toast messages -->
+    <string name="toast_no_internet">No Internet connection</string>
+    <string name="toast_no_schedule">No schedule available for given date and LG</string>
+    <string name="toast_blank_lg">LG name cannot be empty</string>
+    <string name="toast_invalid_lg">Invalid LG name</string>
+    <string name="toast_schedule_help">Click on slot to submit feedback</string>
+    <string name="toast_badge_help">Submit feedback to gain points</string>
+    <string name="toast_contact_help">Click on contact to call or message</string>
+    <string name="toast_notification_help">Refresh to update notifications</string>
+    <string name="toast_error_connecting">Error connecting to server. Try again!</string>
+    <string name="toast_reg_error">Fail to register. Try again!</string>
+    <string name="toast_loc_search_error">Error searching location. Try again!</string>
+    <string name="toast_feedback_success">Feedback submitted successfully, Thank you</string>
+    <string name="toast_feedback_fail">Feedback cannot be submitted, Try again!</string>
+    <string name="toast_feedback_already">You have already submitted feedback for this session.</string>
+
+    <string-array name="locations">
+        <item name="trivandrum">Trivandrum</item>
+        <item name="chennai">Chennai</item>
+        <item name="guwahati">Guwahati</item>
+        <item name="ahmedabad">Ahmedabad</item>
+        <item name="hydrabad">Hyderabad</item>
+    </string-array>
+
+    <!-- Drawer option -->
+    <string name="default_text_feedback_count">Total feedbacks: 0</string>
+    <string name="default_text_feedback_avg">Average rating: NA</string>
+    <string name="title_activity_ibuzzer">IBUZZER</string>
+
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_question_display">Question_display</string>
+    <string name="title_activity_edit_questions">EditQuestions</string>
+    <string name="title_activity_web_case_study">WebCaseStudy</string>
+    <string name="title_activity_tutorial">Tutorial</string>
+    <string name="title_activity_fitness">FitnessActivity</string>
+    <string name="title_activity_chart_view">ChartView</string>
+    <string name="title_activity_distance_view">DistanceView</string>
+    <string name="title_activity_heart_data_type">HeartDataType</string>
+    <string name="title_activity_heart_rate_monitor">HeartRateMonitor</string>
+    <string name="title_activity_heart_rate_chart">HeartRateChart</string>
+    <string name="title_activity_daysvise">Daysvise</string>
+    <string name="title_activity_step_counter">StepCounterActivity</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="title_activity_distance_week_view">DistanceWeekView</string>
+    <string name="title_activity_calorie_consumed">CalorieConsumed</string>
+    <string name="title_activity_calorieconsumedgraph">Calorieconsumedgraph</string>
+    <string name="title_activity_daysvise_calorie">DaysviseCalorie</string>
+    <string name="nav_schedule">Schedule</string>
+    <string name="nav_notifications">Notifications</string>
+    <string name="nav_badges">Badges</string>
+    <string name="nav_locations">Locations</string>
+    <string name="nav_contacts">Emergency Contacts</string>
+    <string name="nav_fitForLife">Fit4Life</string>
+    <string name="nav_ar_learning">AR Learning</string>
+    <string name="nav_rateus">Rate MY ILP</string>
+    <string name="copyright_text">&#169; ILP Innovations 2016</string>
+
+</resources>

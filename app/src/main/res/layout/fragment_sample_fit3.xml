@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="10dp"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+
+            <TextView
+                android:id="@+id/textActivity1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="10dp"
+                android:gravity="center"
+                android:hint="Calorie"
+                android:textColor="@color/colorAccent"
+                android:textSize="16dp" />
+
+
+        </LinearLayout>
+
+
+        <RelativeLayout
+            android:id="@+id/layoutActivities"
+            android:layout_width="match_parent"
+            android:layout_height="444dp"
+            android:orientation="vertical">
+
+            <include layout="@layout/layout_replay" />
+
+            <com.ilp.ilpschedule.fit4life.DecoView
+                android:id="@+id/dynamicArcView"
+                android:layout_width="fill_parent"
+                android:layout_height="500dp"
+                android:layout_margin="10dp"
+                android:layout_weight="166.94">
+
+            </com.ilp.ilpschedule.fit4life.DecoView>
+
+            <TextView
+                android:id="@+id/textPercentage"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:gravity="center"
+                android:hint=""
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:textSize="30sp" />
+
+            <TextView
+                android:id="@+id/textRemaining"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/textPercentage"
+                android:layout_centerHorizontal="true"
+                android:gravity="center"
+                android:maxWidth="200dp"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:textSize="12sp" />
+
+        </RelativeLayout>
+
+
+        <TextView
+            android:id="@+id/goalcalorie"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:layout_margin="10dp"
+            android:layout_marginTop="12dp"
+            android:background="@color/colorPrimaryDark"
+            android:gravity="center"
+            android:text="Set your Goal"
+            android:textColor="#ffff"
+            android:textSize="18dp" />
+
+        <TextView
+            android:id="@+id/onclickgraph"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:layout_margin="10dp"
+            android:background="@color/colorPrimaryDark"
+            android:gravity="center"
+            android:text="Display Graph"
+            android:textColor="#ffff"
+            android:textSize="18sp" />
+
+
+        <TextView
+
+            android:id="@+id/calheart"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:layout_margin="10dp"
+            android:background="@color/colorPrimaryDark"
+            android:gravity="center"
+            android:text="Calculate Heart Rate"
+            android:textColor="#ffff"
+            android:textSize="18sp" />
+
+    </LinearLayout>
+
+
+</ScrollView>

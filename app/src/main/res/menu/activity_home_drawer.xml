@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group android:checkableBehavior="single">
+
+        <item
+            android:id="@+id/nav_schedule"
+            android:icon="@drawable/ic_schedule"
+            android:title="@string/nav_schedule" />
+        <item
+            android:id="@+id/nav_notifications"
+            android:icon="@drawable/ic_notification"
+            android:title="@string/nav_notifications" />
+        <item
+            android:id="@+id/nav_badges"
+            android:icon="@drawable/ic_badge"
+            android:title="@string/nav_badges" />
+        <item
+            android:id="@+id/nav_locations"
+            android:icon="@drawable/ic_location"
+            android:title="@string/nav_locations" />
+
+        <item
+            android:id="@+id/nav_emergency_contacts"
+            android:icon="@drawable/ic_contact"
+            android:title="@string/nav_contacts" />
+
+        <!--<item
+            android:id="@+id/nav_fit_for_life"
+            android:icon="@drawable/walking"
+            android:title="@string/nav_fitForLife" />-->
+
+        <item
+            android:id="@+id/nav_ar_learning"
+            android:icon="@drawable/andaricon"
+            android:title="@string/nav_ar_learning" />
+
+        <item
+            android:id="@+id/nav_rate_us"
+            android:icon="@drawable/ic_rate"
+            android:title="@string/nav_rateus" />
+
+    </group>
+</menu>

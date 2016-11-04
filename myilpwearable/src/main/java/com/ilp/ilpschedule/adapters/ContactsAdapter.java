@@ -5,6 +5,7 @@ package com.ilp.ilpschedule.adapters;
  */
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.wearable.view.CircledImageView;
 import android.support.wearable.view.WearableListView;
 import android.view.LayoutInflater;
@@ -13,6 +14,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.ilp.ilpschedule.R;
+import com.ilp.ilpschedule.activities.ContactDetailsActivity;
 import com.ilp.ilpschedule.beans.ContactsBean;
 
 import java.util.ArrayList;
@@ -20,8 +22,12 @@ import java.util.ArrayList;
 public class ContactsAdapter extends WearableListView.Adapter {
     private ArrayList<ContactsBean> mItems;
     private final LayoutInflater mInflater;
+    private Context mContext;
+
+
 
     public ContactsAdapter(Context context, ArrayList<ContactsBean> items) {
+        mContext = context;
         mInflater = LayoutInflater.from(context);
         mItems = items;
     }
@@ -38,8 +44,14 @@ public class ContactsAdapter extends WearableListView.Adapter {
         ItemViewHolder itemViewHolder = (ItemViewHolder) viewHolder;
         CircledImageView circledView = itemViewHolder.mCircledImageView;
         setupImages(circledView, mItems.get(position).getContactName().charAt(0));
+
         TextView textView = itemViewHolder.mItemTextView;
         textView.setText(mItems.get(position).getContactName());
+
+        // Text view for the phone number
+        // deprecated because of lack of space
+//        TextView numberView = itemViewHolder.mNumberTextView;
+//        numberView.setText(mItems.get(position).getContactNumber());
     }
 
     @Override
@@ -51,11 +63,14 @@ public class ContactsAdapter extends WearableListView.Adapter {
         private CircledImageView mCircledImageView;
         private TextView mItemTextView;
 
+//        private TextView mNumberTextView;
+
         public ItemViewHolder(View itemView) {
             super(itemView);
             mCircledImageView = (CircledImageView)
                     itemView.findViewById(R.id.circle);
             mItemTextView = (TextView) itemView.findViewById(R.id.name);
+//            mNumberTextView = (TextView) itemView.findViewById(R.id.number);
         }
     }
 

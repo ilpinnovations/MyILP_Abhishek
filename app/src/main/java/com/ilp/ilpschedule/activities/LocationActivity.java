@@ -326,9 +326,8 @@ public class LocationActivity extends ActionBarActivity implements
         if (map == null) {
             SupportMapFragment fragment = ((SupportMapFragment) getSupportFragmentManager()
                     .findFragmentById(R.id.fragmentLocationMap));
-            if (fragment != null) {
-                //map = fragment.getMap();
-            }
+            if (fragment != null)
+                map = fragment.getMap();
         }
         return map;
     }

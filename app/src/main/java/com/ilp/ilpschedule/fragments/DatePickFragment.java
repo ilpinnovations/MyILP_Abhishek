@@ -16,6 +16,10 @@ public class DatePickFragment extends DialogFragment {
     private OnDateSetListener listner;
     private Date date;
 
+    public DatePickFragment(){
+
+    }
+
     @SuppressLint("ValidFragment")
     public DatePickFragment(OnDateSetListener listner, Date date) {
         this.listner = listner;

@@ -44,6 +44,9 @@ public class ContactsActivity extends Activity implements WearableListView.Click
     private static final String MSG_INTERNET_NOT_AVAILABLE_CONTACTS = "INTERNET_NOT_AVAILABLE_CONTACTS";
     private static final String MSG_LOGIN_ERROR_CONTACTS = "LOGIN_ERROR_CONTACTS";
 
+    private final static String TAG_CONTACT_NAME = "contactName";
+    private final static String TAG_CONTACT_NUMBER = "contactNumber";
+
     private GoogleApiClient googleClient;
 
 
@@ -93,6 +96,11 @@ public class ContactsActivity extends Activity implements WearableListView.Click
                             String.format("You selected item #%s",
                                     viewHolder.getLayoutPosition() + 1),
                             Toast.LENGTH_SHORT).show();*/
+
+                    Intent intent = new Intent(ContactsActivity.this, ContactDetailsActivity.class);
+                    intent.putExtra(TAG_CONTACT_NAME, contacts.get(viewHolder.getLayoutPosition()).getContactName());
+                    intent.putExtra(TAG_CONTACT_NUMBER, contacts.get(viewHolder.getLayoutPosition()).getContactNumber());
+                    startActivity(intent);
                 }
 
                 @Override

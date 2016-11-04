@@ -6,4 +6,5 @@
     <string name="hello_square">Hello Square World!</string>
     <string name="title_activity_contacts">ContactsActivity</string>
     <string name="title_activity_contacts_detail">ContactsDetailActivity</string>
+    <string name="title_activity_contact_details">ContactDetailsActivity</string>
 </resources>

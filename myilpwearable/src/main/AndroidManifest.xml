@@ -41,15 +41,24 @@
 
         <receiver android:name=".activities.ScheduleActivity$ScheduleReceiver">
             <intent-filter>
-                <action android:name="com.ilp.ilpschedule.INTENT_SCHEDULE"></action>
+                <action android:name="com.ilp.ilpschedule.INTENT_SCHEDULE" />
             </intent-filter>
         </receiver>
         <receiver android:name=".activities.ContactsActivity$ContactsReceiver">
             <intent-filter>
-                <action android:name="com.ilp.ilpschedule.INTENT_CONTACTS"></action>
+                <action android:name="com.ilp.ilpschedule.INTENT_CONTACTS" />
             </intent-filter>
         </receiver>
 
+        <activity
+            android:name=".activities.ContactDetailsActivity"
+            android:label="@string/title_activity_contact_details">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>

@@ -7,7 +7,7 @@ android {
     defaultConfig {
         applicationId "com.ilp.ilpschedule"
         minSdkVersion 15
-        targetSdkVersion 23
+        targetSdkVersion 24
         versionCode 13
         versionName "13.0"
         multiDexEnabled true

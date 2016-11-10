@@ -160,7 +160,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                     }
                 }
 
-
                 break;
         }
     }
@@ -178,10 +177,22 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        if (!checkPermission()) {
-            Log.i(TAG, "REQUEST PERMISSION");
+        SharedPreferences sharedPref = getPreferences(Context.MODE_PRIVATE);
+        String defaultValue = getResources().getString(R.string.permission_default_value);
+
+        String checkPermission = sharedPref.getString(getResources().getString(R.string.check_permission_key), defaultValue);
+
+        if (checkPermission.equalsIgnoreCase("false")){
             requestPermission();
+            SharedPreferences.Editor editor = sharedPref.edit();
+            editor.putString(getResources().getString(R.string.check_permission_key), "true");
+            editor.commit();
         }
+
+//        if (!checkPermission()) {
+//            Log.i(TAG, "REQUEST PERMISSION");
+//            requestPermission();
+//        }
 
         setContentView(R.layout.activity_main);
 

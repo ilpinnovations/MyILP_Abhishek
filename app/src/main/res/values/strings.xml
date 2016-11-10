@@ -123,4 +123,7 @@
     <string name="nav_rateus">Rate MY ILP</string>
     <string name="copyright_text">&#169; ILP Innovations 2016</string>
 
+    <string name="check_permission_key">permission_key</string>
+    <string name="permission_default_value">false</string>
+
 </resources>

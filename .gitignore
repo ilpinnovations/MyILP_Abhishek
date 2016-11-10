@@ -7,3 +7,5 @@
 /captures
 /Screens
 /app/app-release.apk
+*.apk
+*.zip

@@ -1,0 +1,52 @@
+{
+  "project_info": {
+    "project_number": "1039038689673",
+    "project_id": "my-ilp"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1039038689673:android:06854123118da4b6",
+        "android_client_info": {
+          "package_name": "com.ilp.ilpschedule"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1039038689673-cm2hfdpb2ka9vmn49g5cj95dm5hn7c82.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.ilp.ilpschedule",
+            "certificate_hash": "7DCA3A08D5183DAF7327EEBC233D6F4CAE3AC61A"
+          }
+        },
+        {
+          "client_id": "1039038689673-qf8dvpc8nc7c3k3nmpmdt1aao1o5gb0q.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.ilp.ilpschedule",
+            "certificate_hash": "1A9E70E425562A0E19883AA72EEB8B60A1ED46B3"
+          }
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC60nx8ujq-kzz0Vao8axoZTXRuzEfp1dA"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 1
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

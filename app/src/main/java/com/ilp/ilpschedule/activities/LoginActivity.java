@@ -29,7 +29,7 @@ import java.util.Map;
 
 public class LoginActivity extends AppCompatActivity {
 
-    public static final String TAG = "com.ilp.schedule.LoginActivity";
+    public static final String TAG = "LoginActivity";
     private Spinner locationSpinner;
     private EditText editTextName, editTextEmail, editTextEmpId, editTextLg;
 
@@ -117,6 +117,7 @@ public class LoginActivity extends AppCompatActivity {
         }
 
         private void post(String endpoint) throws IOException {
+            Log.d(TAG, "post function");
             URL url;
             try {
                 url = new URL(endpoint);
@@ -151,6 +152,7 @@ public class LoginActivity extends AppCompatActivity {
                 }
             } finally {
                 if (conn != null) {
+                    Log.i(TAG, "Finally");
                     conn.disconnect();
                 }
             }
@@ -162,9 +164,8 @@ public class LoginActivity extends AppCompatActivity {
             int MAX_ATTEMPTS = 4;
             int BACKOFF_MILLI_SECONDS = 1000;
             try {
-
                 instanceID = InstanceID.getInstance(getApplicationContext());
-                regId = instanceID.getToken(String.valueOf(Util.GOOGLE_PROJECT_ID), GoogleCloudMessaging.INSTANCE_ID_SCOPE, null);
+                regId = instanceID.getToken(String.valueOf(Util.GOOGLE_PROJECT_ID), GoogleCloudMessaging.INSTANCE_ID_SCOPE);
                 Log.d("GCM Key", regId);
                 Util.saveRegId(getApplicationContext(), regId);
 
@@ -203,7 +204,8 @@ public class LoginActivity extends AppCompatActivity {
                     }
                 }
             } catch (IOException e) {
-                Log.d(TAG, "fail to register with gcm" + e.getLocalizedMessage());
+//                Log.d(TAG, "fail to register with gcm " + e.getLocalizedMessage());
+                Log.d(TAG,"IOEXCEPTION");
                 res = false;
             }
             return res;

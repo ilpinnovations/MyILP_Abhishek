@@ -9,8 +9,8 @@ android {
         applicationId "com.ilp.ilpschedule"
         minSdkVersion 20
         targetSdkVersion 24
-        versionCode 13
-        versionName "13.0"
+        versionCode 16
+        versionName "16.0"
     }
     buildTypes {
         release {

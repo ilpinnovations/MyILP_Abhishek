@@ -1,0 +1,154 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.ilp.ilpschedule.fragments.IlpFeedbackFragment"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/spinner_background"
+        android:orientation="horizontal"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="3dp"
+        android:layout_marginBottom="5dp"
+        android:layout_marginRight="3dp">
+
+        <Spinner
+            android:id="@+id/spinner"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_gravity="center"
+            android:background="@android:color/transparent"
+            android:gravity="center"
+            android:layout_marginLeft="5dp"
+            android:spinnerMode="dropdown" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_gravity="center"
+            android:src="@mipmap/ic_spinner_drop" />
+
+    </RelativeLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/margin_normal"
+            android:background="@drawable/map_search"
+            android:orientation="vertical"
+            android:padding="@dimen/padding_normal" >
+
+            <TextView
+                android:id="@+id/feedback_type_header"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/margin_normal"
+                android:ems="10"
+                android:gravity="center"
+                android:text="Accomodation"
+                android:textColor="@color/colorPrimary"
+                android:padding="@dimen/padding_normal"
+                android:textAppearance="?android:attr/textAppearanceLarge" />
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingTop="@dimen/padding_normal"
+                android:paddingBottom="@dimen/padding_normal">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:text="@string/label_rating"
+                    android:textAppearance="?android:attr/textAppearanceMedium" />
+
+                <RatingBar
+                    android:id="@+id/feedback_rating"
+                    style="@android:style/Widget.Holo.RatingBar"
+                    android:layout_marginLeft="10dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:numStars="5"
+                    android:rating="1.0"
+                    android:stepSize="0.5" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingTop="@dimen/padding_normal"
+                android:paddingBottom="@dimen/padding_normal">
+                <TextView
+                    android:id="@+id/feedback_provider_type_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:text="@string/label_service_provider"
+                    android:textAppearance="?android:attr/textAppearanceMedium" />
+
+                <EditText
+                    android:id="@+id/feedback_service_provider_et"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="10dp"
+                    android:ems="10"
+                    android:gravity="top"
+                    android:hint=" Service Provider"
+                    android:inputType="textCapSentences"
+                    android:maxLines="10"
+                    android:textColorHint="#cccccc">
+                    <requestFocus />
+                </EditText>
+            </LinearLayout>
+
+            <EditText
+                android:id="@+id/feedback_comment_et"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:gravity="top"
+                android:hint="@string/hint_comment"
+                android:inputType="textMultiLine"
+                android:maxLines="10"
+                android:padding="@dimen/padding_normal"
+                android:background="@drawable/custom_edittext"
+                android:lines="5"
+                android:textColorHint="#cccccc"/>
+
+            <TextView
+                android:id="@+id/feedback_word_count_tv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="right"
+                android:text="Minimum Characters: 30"
+                android:layout_marginBottom="@dimen/margin_normal"
+                android:textAppearance="?android:attr/textAppearanceSmall" />
+
+            <ImageButton
+                android:id="@+id/feedback_send_btn"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/btn_success"
+                android:contentDescription="@string/send"
+                android:padding="@dimen/padding_normal"
+                android:src="@drawable/ic_send" />
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</LinearLayout>

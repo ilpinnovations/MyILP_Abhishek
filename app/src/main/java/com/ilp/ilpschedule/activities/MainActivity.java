@@ -51,6 +51,7 @@ import com.ilp.ilpschedule.fit4life.FitnessActivity;
 import com.ilp.ilpschedule.fragments.BadgeFragment;
 import com.ilp.ilpschedule.fragments.ContactFragment;
 import com.ilp.ilpschedule.fragments.FeedbackFragment;
+import com.ilp.ilpschedule.fragments.IlpFeedbackFragment;
 import com.ilp.ilpschedule.fragments.NotificationFragment;
 import com.ilp.ilpschedule.fragments.ScheduleFragment;
 import com.ilp.ilpschedule.model.Employee;
@@ -256,6 +257,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     protected void onResume() {
         super.onResume();
 
+        position = 0;
+
+        Log.i(TAG, "onResume");
+
         manageNavigation();
 
         ScheduleFragment scheduleFragment = new ScheduleFragment();
@@ -264,6 +269,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         fragmentTransaction.replace(R.id.container, scheduleFragment);
         fragmentTransaction.commit();
         flag = true;
+
+//        navigationView.setCheckedItem(R.id.nav_schedule);
 
     }
 
@@ -573,7 +580,18 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             android.app.FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
             fragmentTransaction.replace(R.id.container, aboutAppFragment).commit();
 
-        } /*else if (id == R.id.nav_fit_for_life) {
+        } else if (id == R.id.nav_feedback) {
+            position = 4;
+            flag = false;
+            toolbar.setTitle("Feedback");
+
+            IlpFeedbackFragment feedbackFragment = new IlpFeedbackFragment();
+            android.app.FragmentManager fragmentManager = getFragmentManager();
+            android.app.FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+            fragmentTransaction.replace(R.id.container, feedbackFragment).commit();
+        }
+
+        /*else if (id == R.id.nav_fit_for_life) {
             position = 0;
             flag = false;
             startActivity(new Intent(getApplicationContext(),
@@ -644,6 +662,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     }
 
     private void manageNavigation() {
+        Log.i(TAG, "position: " + position);
+
         switch (position) {
             case 0:
                 navigationView.setCheckedItem(R.id.nav_schedule);
@@ -657,6 +677,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 break;
             case 3:
                 navigationView.setCheckedItem(R.id.nav_emergency_contacts);
+                break;
+
+            case 4:
+                navigationView.setCheckedItem(R.id.nav_feedback);
                 break;
 
         }

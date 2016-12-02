@@ -24,6 +24,11 @@
             android:icon="@drawable/ic_contact"
             android:title="@string/nav_contacts" />
 
+        <item
+            android:id="@+id/nav_feedback"
+            android:icon="@drawable/ic_feedback"
+            android:title="@string/nav_feedback" />
+
         <!--<item
             android:id="@+id/nav_fit_for_life"
             android:icon="@drawable/walking"

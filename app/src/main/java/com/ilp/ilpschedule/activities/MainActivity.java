@@ -1,5 +1,6 @@
 package com.ilp.ilpschedule.activities;
 
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.app.Fragment;
@@ -15,7 +16,6 @@ import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
@@ -28,34 +28,30 @@ import android.telephony.SmsManager;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.ViewGroup;
 import android.view.Window;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
-import com.google.android.gms.wearable.DataApi;
-import com.google.android.gms.wearable.DataEvent;
-import com.google.android.gms.wearable.DataEventBuffer;
-import com.google.android.gms.wearable.DataItem;
-import com.google.android.gms.wearable.DataMapItem;
-import com.google.android.gms.wearable.Wearable;
 import com.ilp.ilpschedule.R;
 import com.ilp.ilpschedule.fit4life.CalorieConsumed;
 import com.ilp.ilpschedule.fit4life.FitnessActivity;
 import com.ilp.ilpschedule.fragments.BadgeFragment;
 import com.ilp.ilpschedule.fragments.ContactFragment;
 import com.ilp.ilpschedule.fragments.FeedbackFragment;
+import com.ilp.ilpschedule.fragments.IlpFeedbackFragment;
 import com.ilp.ilpschedule.fragments.NotificationFragment;
 import com.ilp.ilpschedule.fragments.ScheduleFragment;
 import com.ilp.ilpschedule.model.Employee;
 import com.ilp.ilpschedule.model.SlotViewHolder;
-import com.ilp.ilpschedule.service.WearableService;
 import com.ilp.ilpschedule.util.Constants;
 import com.ilp.ilpschedule.util.Util;
 
@@ -176,6 +172,15 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        View view = (View) findViewById(R.id.parent);
+
+        if (view != null){
+            setupUI(view);
+        }else {
+            Log.i(TAG, "Error: view is null!");
+        }
 
         SharedPreferences sharedPref = getPreferences(Context.MODE_PRIVATE);
         String defaultValue = getResources().getString(R.string.permission_default_value);
@@ -193,8 +198,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 //            Log.i(TAG, "REQUEST PERMISSION");
 //            requestPermission();
 //        }
-
-        setContentView(R.layout.activity_main);
 
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         web_update();
@@ -240,6 +243,14 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         navigationView.setNavigationItemSelectedListener(this);
         navigationView.setCheckedItem(R.id.nav_schedule);
 
+        if (Util.isGrabASeat(getApplicationContext())){
+            MenuItem item = navigationView.getMenu().getItem(5);
+            item.setVisible(true);
+        }else {
+            MenuItem item = navigationView.getMenu().getItem(5);
+            item.setVisible(false);
+        }
+
         Employee emp = Util.getEmployee(MainActivity.this);
 
         View header = navigationView.getHeaderView(0);
@@ -256,6 +267,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     protected void onResume() {
         super.onResume();
 
+        position = 0;
+
+        Log.i(TAG, "onResume");
+
         manageNavigation();
 
         ScheduleFragment scheduleFragment = new ScheduleFragment();
@@ -264,6 +279,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         fragmentTransaction.replace(R.id.container, scheduleFragment);
         fragmentTransaction.commit();
         flag = true;
+
+//        navigationView.setCheckedItem(R.id.nav_schedule);
 
     }
 
@@ -528,6 +545,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
+        hideSoftKeyboard(MainActivity.this);
+Log.d("---------","nav_daw");
         int id = item.getItemId();
         if (id == R.id.nav_schedule) {
             flag = true;
@@ -559,21 +578,40 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             fragmentTransaction.replace(R.id.container, aboutAppFragment).commit();
 
         } else if (id == R.id.nav_locations) {
-            position = 0;
+            position = 3;
             flag = false;
             startActivity(new Intent(getApplicationContext(),
                     LocationActivity.class));
             currentTitle = getString(R.string.title_location);
 
         } else if (id == R.id.nav_emergency_contacts) {
-            position = 3;
+            position = 4;
             flag = false;
             ContactFragment aboutAppFragment = new ContactFragment();
             android.app.FragmentManager fragmentManager = getFragmentManager();
             android.app.FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
             fragmentTransaction.replace(R.id.container, aboutAppFragment).commit();
 
-        } /*else if (id == R.id.nav_fit_for_life) {
+        } else if (id == R.id.nav_feedback) {
+            position = 6;
+            flag = false;
+            toolbar.setTitle("Feedback");
+
+            IlpFeedbackFragment feedbackFragment = new IlpFeedbackFragment();
+            android.app.FragmentManager fragmentManager = getFragmentManager();
+            android.app.FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+            fragmentTransaction.replace(R.id.container, feedbackFragment).commit();
+
+        }else if (id == R.id.nav_grab_a_seat) {
+            position = 5;
+            flag = false;
+            toolbar.setTitle("GrabAseat");
+
+            Intent gasIntent = new Intent(MainActivity.this, GrabASeatActivity.class);
+            startActivity(gasIntent);
+        }
+
+        /*else if (id == R.id.nav_fit_for_life) {
             position = 0;
             flag = false;
             startActivity(new Intent(getApplicationContext(),
@@ -644,6 +682,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     }
 
     private void manageNavigation() {
+        Log.i(TAG, "position: " + position);
+
         switch (position) {
             case 0:
                 navigationView.setCheckedItem(R.id.nav_schedule);
@@ -657,6 +697,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 break;
             case 3:
                 navigationView.setCheckedItem(R.id.nav_emergency_contacts);
+                break;
+
+            case 4:
+                navigationView.setCheckedItem(R.id.nav_feedback);
                 break;
 
         }
@@ -839,5 +883,34 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     }
 
 
+    public static void hideSoftKeyboard(Activity activity) {
+        InputMethodManager inputMethodManager =
+                (InputMethodManager) activity.getSystemService(
+                        Activity.INPUT_METHOD_SERVICE);
+
+        inputMethodManager.hideSoftInputFromWindow(
+                activity.getCurrentFocus().getWindowToken(), 0);
+    }
+
+    public void setupUI(View view) {
+
+        // Set up touch listener for non-text box views to hide keyboard.
+        if (!(view instanceof EditText)) {
+            view.setOnTouchListener(new View.OnTouchListener() {
+                public boolean onTouch(View v, MotionEvent event) {
+                    hideSoftKeyboard(MainActivity.this);
+                    return false;
+                }
+            });
+        }
+
+        //If a layout container, iterate over children and seed recursion.
+        if (view instanceof ViewGroup) {
+            for (int i = 0; i < ((ViewGroup) view).getChildCount(); i++) {
+                View innerView = ((ViewGroup) view).getChildAt(i);
+                setupUI(innerView);
+            }
+        }
+    }
 
 }

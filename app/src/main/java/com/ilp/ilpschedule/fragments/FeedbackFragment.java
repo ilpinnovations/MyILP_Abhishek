@@ -7,9 +7,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.RatingBar;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -46,6 +48,7 @@ public class FeedbackFragment extends Fragment {
     private long slot_id;
     private Bundle bundle;
     private RequestQueue reqQueue;
+
     private Listener<String> feedbackSubmitTaskSuccessListner = new Listener<String>() {
         @Override
         public void onResponse(String response) {

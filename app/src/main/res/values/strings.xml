@@ -41,6 +41,7 @@
 
     <!-- Labels -->
     <string name="label_rating">Rating</string>
+    <string name="label_service_provider">Name</string>
 
     <!-- Hints -->
     <string name="hint_name">Name</string>
@@ -121,9 +122,22 @@
     <string name="nav_fitForLife">Fit4Life</string>
     <string name="nav_ar_learning">AR Learning</string>
     <string name="nav_rateus">Rate MY ILP</string>
+    <string name="nav_feedback">Feedback</string>
+    <string name="nav_grab_a_seat">Grab-A-Seat</string>
     <string name="copyright_text">&#169; ILP Innovations 2016</string>
 
     <string name="check_permission_key">permission_key</string>
     <string name="permission_default_value">false</string>
+
+    <string-array name="feedback_array">
+        <item>Accommodation</item>
+        <item>Transport</item>
+        <item>Canteen</item>
+    </string-array>
+
+    <string name="spinner_title">Feedback Type</string>
+    <string name="title_activity_grab_aseat">Grab A Seat</string>
+    <string name="section_format">Hello World from section: %1$d</string>
+    <string name="title_activity_test">Test</string>
 
 </resources>

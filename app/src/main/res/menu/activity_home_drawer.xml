@@ -6,14 +6,17 @@
             android:id="@+id/nav_schedule"
             android:icon="@drawable/ic_schedule"
             android:title="@string/nav_schedule" />
+
         <item
             android:id="@+id/nav_notifications"
             android:icon="@drawable/ic_notification"
             android:title="@string/nav_notifications" />
+
         <item
             android:id="@+id/nav_badges"
             android:icon="@drawable/ic_badge"
             android:title="@string/nav_badges" />
+
         <item
             android:id="@+id/nav_locations"
             android:icon="@drawable/ic_location"
@@ -23,6 +26,16 @@
             android:id="@+id/nav_emergency_contacts"
             android:icon="@drawable/ic_contact"
             android:title="@string/nav_contacts" />
+
+        <item
+            android:id="@+id/nav_grab_a_seat"
+            android:icon="@mipmap/ic_grab_a_seat"
+            android:title="@string/nav_grab_a_seat" />
+
+        <item
+            android:id="@+id/nav_feedback"
+            android:icon="@drawable/ic_feedback"
+            android:title="@string/nav_feedback" />
 
         <!--<item
             android:id="@+id/nav_fit_for_life"

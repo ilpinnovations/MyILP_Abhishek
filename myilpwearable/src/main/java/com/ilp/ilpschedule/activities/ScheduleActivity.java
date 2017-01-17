@@ -156,12 +156,6 @@ public class ScheduleActivity extends Activity implements WearableListView.Click
     }
 
 
-    @Override
-    public void onConnected(Bundle connectionHint) {
-        String message = "Hello wearable\n Via the data layer";
-        new SendToDataLayerThread(SCHEDULE, message).start();
-    }
-
 
     @Override
     protected void onStop() {
@@ -180,6 +174,12 @@ public class ScheduleActivity extends Activity implements WearableListView.Click
     public void onConnectionFailed(ConnectionResult connectionResult) {
     }
 
+    @Override
+    public void onConnected(Bundle connectionHint) {
+        String message = "Hello wearable\n Via the data layer";
+        new SendToDataLayerThread(SCHEDULE, message).start();
+    }
+
     class SendToDataLayerThread extends Thread {
         String path;
         String message;
@@ -192,7 +192,10 @@ public class ScheduleActivity extends Activity implements WearableListView.Click
         public void run() {
             NodeApi.GetConnectedNodesResult nodes = Wearable.NodeApi.getConnectedNodes(googleClient).await();
             for (Node node : nodes.getNodes()) {
-                MessageApi.SendMessageResult result = Wearable.MessageApi.sendMessage(googleClient, node.getId(), path, message.getBytes()).await();
+                MessageApi.SendMessageResult result = Wearable.MessageApi.sendMessage(googleClient,
+                        node.getId(),
+                        path,
+                        message.getBytes()).await();
                 if (result.getStatus().isSuccess()) {
                     Log.v("myTag", "Message: {" + message + "} sent to: " + node.getDisplayName());
                 } else {

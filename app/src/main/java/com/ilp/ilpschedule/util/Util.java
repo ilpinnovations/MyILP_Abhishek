@@ -8,11 +8,13 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.util.Log;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.ShareActionProvider;
 import android.widget.Toast;
 
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GooglePlayServicesUtil;
 import com.ilp.ilpschedule.R;
+import com.ilp.ilpschedule.model.AssociateGAS;
 import com.ilp.ilpschedule.model.Employee;
 import com.ilp.ilpschedule.model.ILPLocation;
 
@@ -353,5 +355,42 @@ public class Util {
             spf.edit().putString(Constants.PREF_KEYS.GCM_REG_ID, regId)
                     .apply();
         }
+    }
+
+    public static boolean isGrabASeat(Context context){
+        Employee employee = getEmployee(context);
+
+        if (employee.getLocation().equalsIgnoreCase("Trivandrum")){
+            return true;
+        }else {
+            return false;
+        }
+    }
+
+    public static void saveAssociateGAS(Context context, AssociateGAS associate){
+        SharedPreferences prefs = context.getSharedPreferences(Constants.GRAB_A_SEAT.PREFERENCES.NAME, Context.MODE_PRIVATE);
+        SharedPreferences.Editor ed = prefs.edit();
+
+        ed.putString(Constants.GRAB_A_SEAT.PREFERENCES.CHECK_ASSOCIATE.KEY_LG, associate.getLg());
+        ed.putString(Constants.GRAB_A_SEAT.PREFERENCES.CHECK_ASSOCIATE.KEY_ACCOMMODATION, associate.getAccommodation());
+        ed.putString(Constants.GRAB_A_SEAT.PREFERENCES.CHECK_ASSOCIATE.KEY_LAP, associate.getLap());
+        ed.apply();
+    }
+
+    public static AssociateGAS getAssociateGAS(Context context){
+        SharedPreferences prefs = context.getSharedPreferences(Constants.GRAB_A_SEAT.PREFERENCES.NAME, Context.MODE_PRIVATE);
+
+        AssociateGAS data = new AssociateGAS();
+        data.setLg(prefs.getString(Constants.GRAB_A_SEAT.PREFERENCES.CHECK_ASSOCIATE.KEY_LG, ""));
+        data.setAccommodation(prefs.getString(Constants.GRAB_A_SEAT.PREFERENCES.CHECK_ASSOCIATE.KEY_ACCOMMODATION, ""));
+        data.setLap(prefs.getString(Constants.GRAB_A_SEAT.PREFERENCES.CHECK_ASSOCIATE.KEY_LAP, "no"));
+
+        return data;
+    }
+
+    public static void clearGASPrefs(Context context){
+        SharedPreferences prefs = context.getSharedPreferences(Constants.GRAB_A_SEAT.PREFERENCES.NAME, Context.MODE_PRIVATE);
+
+        prefs.edit().clear().apply();
     }
 }

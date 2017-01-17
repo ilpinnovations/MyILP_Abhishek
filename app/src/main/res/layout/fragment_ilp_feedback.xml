@@ -134,7 +134,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="right"
-                android:text="Minimum Characters: 30"
+                android:text="Character Remaining: 30"
                 android:layout_marginBottom="@dimen/margin_normal"
                 android:textAppearance="?android:attr/textAppearanceSmall" />
 

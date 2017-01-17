@@ -1,6 +1,7 @@
 package com.ilp.ilpschedule.fragments;
 
 
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -12,8 +13,10 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
@@ -186,8 +189,10 @@ public class IlpFeedbackFragment extends Fragment {
         public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
             if (charSequence.length() < 30){
                 charCount.setTextColor(Color.RED);
+                charCount.setText("Character Remaining: " + (30 - charSequence.length()));
             }else {
                 charCount.setTextColor(getActivity().getResources().getColor(R.color.colorPrimary));
+                charCount.setText("");
             }
         }
 
@@ -221,8 +226,6 @@ public class IlpFeedbackFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View rootView = inflater.inflate(R.layout.fragment_ilp_feedback, container, false);
-
-
 
         spinner = (Spinner) rootView.findViewById(R.id.spinner);
         serviceProviderEt = (EditText) rootView.findViewById(R.id.feedback_service_provider_et);

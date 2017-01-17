@@ -15,7 +15,7 @@
     <uses-permission android:name="android.permission.CALL_PHONE" />
     <uses-permission android:name="android.permission.SEND_SMS" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
 
     <!-- Required OpenGL ES 2.0. for Maps V2 -->
     <uses-feature
@@ -196,9 +196,19 @@
         <service android:name=".service.WearableService">
             <intent-filter>
                 <action android:name="com.google.android.gms.wearable.MESSAGE_RECEIVED" />
-                <data android:scheme="wear" android:host="*" />
+
+                <data
+                    android:host="*"
+                    android:scheme="wear" />
             </intent-filter>
         </service>
+
+        <activity
+            android:name=".activities.GrabASeatActivity"
+            android:configChanges="orientation|screenSize"
+            android:label="@string/title_activity_grab_aseat"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>
+
     </application>
 
 </manifest>

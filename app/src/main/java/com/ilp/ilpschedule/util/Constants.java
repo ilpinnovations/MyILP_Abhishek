@@ -38,6 +38,48 @@ public interface Constants {
 		String BADGE_POINTS = "my_points";
 	}
 
+	public interface GRAB_A_SEAT{
+		String BASE_URL = "http://myilp.org/grabaseat/native/";
+
+		public interface CHECK_ASSOCIATE{
+			String URL = BASE_URL + "check_associate.php";
+			String PARAM_EMP_ID = "emp_id";
+			String KEY_RESULT = "result";
+			String VALUE_INVALID = "Invalid";
+		}
+
+		public interface GET_TIMINGS{
+			String URL = BASE_URL + "get_timings.php";
+			String PARAM_TYPE = "type";
+			String PARAM_ACCOMMODATION = "accommodation";
+			String PARAM_LAP = "lap";
+			String PARAM_LG = "lg";
+
+			String KEY_RESULT = "result";
+			String VALUE_INVALID = "Invalid";
+			String VALUE_NOT_SET = "Not Set";
+		}
+
+		public interface CHECK_BOOKING{
+			String URL = BASE_URL + "check_booking.php";
+			String PARAM_TYPE = "type";
+			String PARAM_EMP_ID = "emp_id";
+
+			String KEY_RESULT = "result";
+			String VALUE_NOT_BOOKED = "Not Booked";
+		}
+
+		public interface PREFERENCES{
+			String NAME = "grab_a_seat";
+
+			public interface CHECK_ASSOCIATE{
+				String KEY_LG = "lg";
+				String KEY_ACCOMMODATION = "accommodation";
+				String KEY_LAP = "lap";
+			}
+		}
+	}
+
 	public interface EMP_ERRORS {
 		public interface EMAIL {
 			int BLANK = 1;

@@ -213,4 +213,5 @@ public class ContactFragment extends Fragment {
         final AlertDialog alert = builder.create();
         alert.show();
     }
+    
 }

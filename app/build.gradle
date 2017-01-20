@@ -8,8 +8,8 @@ android {
         applicationId "com.ilp.ilpschedule"
         minSdkVersion 15
         targetSdkVersion 24
-        versionCode 16
-        versionName "16.0"
+        versionCode 17
+        versionName "17.0"
         multiDexEnabled true
     }
     buildTypes {
@@ -52,6 +52,9 @@ dependencies {
     compile 'com.google.android.gms:play-services-auth:9.0.1'
     compile 'com.google.android.gms:play-services-gcm:9.0.1'
     compile 'com.android.support:support-v4:24.2.1'
+
+    // App Intro
+    compile 'com.github.paolorotolo:appintro:4.1.0'
 }
 
 apply plugin: 'com.google.gms.google-services'

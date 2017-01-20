@@ -19,54 +19,69 @@ public class NotificationAdapter extends ArrayAdapter<Notification> {
     private Context context;
     private ArrayList<Notification> notifications;
 
+
+
     public NotificationAdapter(Context context, ArrayList<Notification> objects) {
         super(context, R.layout.notification_item, objects);
         this.context = context;
         notifications = objects;
     }
 
-    public void setData(List<Notification> data) {
-        if (notifications == null)
-            notifications = new ArrayList<Notification>();
-        if (data != null && data.size() > 0) {
-            notifications.clear();
-            notifications.addAll(data);
-            Collections.sort(notifications);
-            notifyDataSetChanged();
-            notifyDataSetInvalidated();
-        }
-    }
-
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        NotificationViewHolder nvh;
+
+        // Get the data item for this position
+        Notification notification = notifications.get(position);
+
+        // Check if an existing view is being reused, otherwise inflate the view
+        ViewHolder viewHolder; // view lookup cache stored in tag
+
         if (convertView == null) {
-            convertView = ((LayoutInflater) context
-                    .getSystemService(Context.LAYOUT_INFLATER_SERVICE))
-                    .inflate(R.layout.notification_item, parent, false);
-            nvh = new NotificationViewHolder();
-            nvh.setMsg((TextView) convertView
-                    .findViewById(R.id.textViewNotificationContent));
-            nvh.setDate((TextView) convertView
-                    .findViewById(R.id.textViewNotificationTimestamp));
-            convertView.setTag(nvh);
+
+            viewHolder = new ViewHolder();
+            LayoutInflater inflater = LayoutInflater.from(getContext());
+            convertView = inflater.inflate(R.layout.notification_item, parent, false);
+            viewHolder.content = (TextView) convertView.findViewById(R.id.textViewNotificationContent);
+            viewHolder.date = (TextView) convertView.findViewById(R.id.textViewNotificationTimestamp);
+
+            convertView.setTag(viewHolder);
+        }else {
+            viewHolder = (ViewHolder) convertView.getTag();
         }
-        nvh = (NotificationViewHolder) convertView.getTag();
 
-        nvh.getMsg().setText(getItem(position).getMsg());
-        nvh.getDate().setText(
-                Notification.outputDateFormat.format(getItem(position)
-                        .getDate()));
+        viewHolder.content.setText(notification.getMsg());
+        viewHolder.date.setText(Notification.outputDateFormat.format(notification.getDate()));
+
+        // Return the completed view to render on screen
         return convertView;
+
+
+//        NotificationViewHolder nvh;
+//        if (convertView == null) {
+//            convertView = ((LayoutInflater) context
+//                    .getSystemService(Context.LAYOUT_INFLATER_SERVICE))
+//                    .inflate(R.layout.notification_item, parent, false);
+//            nvh = new NotificationViewHolder();
+//            nvh.setMsg((TextView) convertView
+//                    .findViewById(R.id.textViewNotificationContent));
+//            nvh.setDate((TextView) convertView
+//                    .findViewById(R.id.textViewNotificationTimestamp));
+//            convertView.setTag(nvh);
+//        }
+//        nvh = (NotificationViewHolder) convertView.getTag();
+//
+//        nvh.getMsg().setText(getItem(position).getMsg());
+//        nvh.getDate().setText(
+//                Notification.outputDateFormat.format(getItem(position)
+//                        .getDate()));
+//        return convertView;
     }
 
-    public void addData(List<Notification> notifications) {
-        if (this.notifications == null)
-            this.notifications = new ArrayList<>();
-        this.notifications.clear();
-        this.notifications.addAll(notifications);
-        Collections.sort(this.notifications);
-        notifyDataSetInvalidated();
-        notifyDataSetChanged();
+    // View lookup cache
+    private static class ViewHolder {
+        TextView content;
+        TextView date;
+
     }
+
 }

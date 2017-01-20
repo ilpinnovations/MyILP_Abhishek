@@ -140,4 +140,7 @@
     <string name="section_format">Hello World from section: %1$d</string>
     <string name="title_activity_test">Test</string>
 
+    <string name="app_desc">MyILP is a hybrid application to help trainees, by giving them access to schedule on-the-go, emergency contacts, and much more…</string>
+    <string name="app_features">* ILP Schedule\n* Offline View\n* Emergency Contacts\n* Live Feedback\n* Safety First\n* Live feedback &amp; viewer\n* Support for Android wearable &amp; TV\n* GeoSpacial Intelligence\n* iBuzzer</string>
+
 </resources>

@@ -77,8 +77,8 @@ public class DbHelper extends SQLiteOpenHelper {
         return added;
     }
 
-    public List<Notification> getNotifications() {
-        List<Notification> notifications = new ArrayList<>();
+    public ArrayList<Notification> getNotifications() {
+        ArrayList<Notification> notifications = new ArrayList<>();
         Notification notification;
         try {
             SQLiteDatabase db = getReadableDatabase();

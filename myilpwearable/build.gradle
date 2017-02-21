@@ -1,6 +1,5 @@
 apply plugin: 'com.android.application'
 
-
 android {
     compileSdkVersion 24
     buildToolsVersion "24.0.1"
@@ -9,13 +8,10 @@ android {
         applicationId "com.ilp.ilpschedule"
         minSdkVersion 20
         targetSdkVersion 24
-<<<<<<< HEAD
         versionCode 15
         versionName "15.0"
-=======
         versionCode 16
         versionName "16.0"
->>>>>>> feedback
     }
     buildTypes {
         release {

@@ -66,18 +66,22 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     public void login(View view) {
+        Util.showProgressDialog(this);
 
         if (Util.hasInternetAccess(getApplicationContext())) {
             Employee emp = new Employee();
 
-            long empId = Long.parseLong(editTextEmpId.getText().toString().trim());
+            long empId = -999;
+            if (!editTextEmpId.getText().toString().equalsIgnoreCase("")) {
+                empId = Long.parseLong(editTextEmpId.getText().toString().trim());
+            }
 
             emp.setEmpId(empId);
 
             emp.setName(editTextName.getText().toString().trim()
                     .toUpperCase(Locale.US));
             emp.setLg(editTextLg.getText().toString().trim()
-                    .toUpperCase(Locale.US));
+                    .toUpperCase(Locale.US).replace(" ", ""));
             emp.setEmail(editTextEmail.getText().toString().trim());
             emp.setLocation((String) locationSpinner.getSelectedItem());
 

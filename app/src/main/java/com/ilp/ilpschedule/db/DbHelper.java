@@ -165,6 +165,12 @@ public class DbHelper extends SQLiteOpenHelper {
         return contacts;
     }
 
+    public void truncateContacts(){
+        SQLiteDatabase db = getWritableDatabase();
+        db.execSQL("DELETE FROM " + DbStructure.ContactTable.TABLE_NAME);
+        db.close();
+    }
+
 
     public int addSlots(List<Slot> slots) {
         int added = 0;

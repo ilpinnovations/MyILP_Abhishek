@@ -42,6 +42,7 @@ import android.widget.Toast;
 
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.ilp.ilpschedule.R;
+import com.ilp.ilpschedule.db.DbHelper;
 import com.ilp.ilpschedule.fit4life.CalorieConsumed;
 import com.ilp.ilpschedule.fit4life.FitnessActivity;
 import com.ilp.ilpschedule.fragments.BadgeFragment;
@@ -444,6 +445,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     private void logout() {
         Util.clearPref(MainActivity.this);
+        DbHelper helper = new DbHelper(getApplicationContext());
+        helper.truncateContacts();
         Intent intent = new Intent(MainActivity.this, LoginActivity.class);
         startActivity(intent);
         finish();

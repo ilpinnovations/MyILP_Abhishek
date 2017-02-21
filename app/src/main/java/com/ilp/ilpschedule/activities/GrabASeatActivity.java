@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.webkit.WebChromeClient;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
@@ -31,6 +32,7 @@ public class GrabASeatActivity extends AppCompatActivity {
 
         webView = (WebView) findViewById(R.id.grab_a_seat_web_view);
         webView.setWebViewClient(new MyBrowser());
+        webView.setWebChromeClient(new WebChromeClient());
         webView.getSettings().setLoadsImagesAutomatically(true);
         webView.getSettings().setJavaScriptEnabled(true);
         webView.setScrollBarStyle(View.SCROLLBARS_INSIDE_OVERLAY);
@@ -46,5 +48,7 @@ public class GrabASeatActivity extends AppCompatActivity {
             view.loadUrl(url);
             return true;
         }
+
+
     }
 }

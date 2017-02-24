@@ -90,7 +90,7 @@
             android:name=".activities.LocationActivity"
             android:label="@string/title_location" />
         <activity
-            android:name=".activities.LoginActivity"
+            android:name=".activities.RegisterActivity"
             android:configChanges="orientation|screenSize"
             android:label="@string/app_name" />
 
@@ -207,13 +207,14 @@
             android:name=".activities.GrabASeatActivity"
             android:configChanges="orientation|screenSize"
             android:label="@string/title_activity_grab_aseat"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>
-
-        <activity android:name="com.ilp.ilpschedule.app_intro.Intro"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+        <activity
+            android:name=".app_intro.Intro"
             android:label="@string/app_name"
             android:screenOrientation="portrait"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>
-
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+        <activity android:name=".activities.LoginChoiceActivity" />
+        <activity android:name=".activities.LoginActivity"></activity>
     </application>
 
 </manifest>

@@ -9,8 +9,8 @@ import android.support.v4.app.Fragment;
 import com.github.paolorotolo.appintro.AppIntro;
 import com.github.paolorotolo.appintro.AppIntroFragment;
 import com.ilp.ilpschedule.R;
-import com.ilp.ilpschedule.activities.LoginActivity;
-import com.ilp.ilpschedule.activities.MainActivity;
+import com.ilp.ilpschedule.activities.LoginChoiceActivity;
+import com.ilp.ilpschedule.activities.RegisterActivity;
 
 /**
  * Created by 1115394 on 1/17/2017.
@@ -82,7 +82,7 @@ public class Intro extends AppIntro {
     @Override
     public void onDonePressed(Fragment currentFragment) {
         super.onDonePressed(currentFragment);
-        Intent intent = new Intent(Intro.this, LoginActivity.class);
+        Intent intent = new Intent(Intro.this, LoginChoiceActivity.class);
         startActivity(intent);
         finish();
     }

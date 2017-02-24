@@ -15,6 +15,10 @@
     <color name="color_schedule_list_item_normal">#FFFFFF</color>
     <color name="color_schedule_list_item_active">#F5F5F5</color>-->
 
+    <color name="md_black">#000000</color>
+    <!-- <color name="md_grey_1000">#ffffff</color> -->
+    <color name="md_white">#ffffff</color>
+
     <!-- contact list color sets -->
     <color name="color_set_a">#F44336</color>
     <color name="color_set_b">#9C27B0</color>

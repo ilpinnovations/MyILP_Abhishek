@@ -13,6 +13,7 @@ public interface Constants {
 	String URL_FEEDBACK_SUBMIT = URL_BASE + "feedback_json.php";
 	String URL_FEEDBACK_SUMMARY = URL_BASE + "faculty_json.php?";
 	String URL_REGISTER = URL_BASE + "register.php";
+	String URL_LOGIN = URL_BASE + "login.php";
 	String URL_GOOGLE_MAP_SEARCH = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?";
 
 	String QUESTIONMARK = "?";
@@ -36,6 +37,14 @@ public interface Constants {
 		String IS_LOGIN = "is_login";
 		String GCM_REG_ID = "gcm_reg_id";
 		String BADGE_POINTS = "my_points";
+	}
+
+	public interface USER_TABLE_ATTRIB{
+		String EMP_ID = "emp_id";
+		String EMAIL = "emp_email";
+		String NAME = "emp_name";
+		String LOCATION = "emp_loc";
+		String BATCH = "emp_batch";
 	}
 
 	public interface GRAB_A_SEAT{

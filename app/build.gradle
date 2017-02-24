@@ -8,8 +8,8 @@ android {
         applicationId "com.ilp.ilpschedule"
         minSdkVersion 15
         targetSdkVersion 24
-        versionCode 18
-        versionName "18"
+        versionCode 19
+        versionName "19"
         multiDexEnabled true
     }
     buildTypes {

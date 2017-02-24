@@ -5,111 +5,126 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_gravity="center_vertical"
-    android:background="@drawable/app_background"
+    android:background="@color/colorPrimary"
     android:fitsSystemWindows="true">
 
-
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_gravity="center_vertical"
-        android:orientation="vertical">
+        android:layout_height="match_parent">
+        <!-- Login progress -->
+        <ProgressBar
+            android:id="@+id/login_progress"
+            style="?android:attr/progressBarStyleLarge"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:visibility="gone"
+            android:layout_centerInParent="true"/>
 
         <TextView
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_margin="4dp"
-            android:gravity="center"
-            android:text="Register for MY ILP"
-            android:textColor="@color/colorPrimary"
-            android:textSize="26sp" />
+            android:id="@+id/login_title"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:layout_marginTop="22dp"
+            android:gravity="center_horizontal"
+            android:text="Register"
+            android:textColor="#fff"
+            android:textSize="26sp"
+            android:textStyle="bold" />
 
-        <android.support.v7.widget.CardView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_gravity="center_vertical"
-            android:layout_margin="10dp"
-            android:elevation="6dp"
-            app:cardCornerRadius="6dp">
-
+        <RelativeLayout
+            android:id="@+id/login_form"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/login_title"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:layout_marginTop="70dp"
+            android:background="#fff"
+            android:elevation="4dp"
+            android:orientation="vertical"
+            android:padding="20dp">
 
             <LinearLayout
-                android:layout_width="match_parent"
+                android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="10dp"
                 android:orientation="vertical"
-                android:padding="@dimen/padding_normal">
-
+                android:paddingTop="30dp">
 
                 <android.support.design.widget.TextInputLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="25dp">
+                    android:layout_height="wrap_content">
 
-                    <EditText
+                    <AutoCompleteTextView
                         android:id="@+id/editTextLoginEmployeeId"
                         android:layout_width="fill_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginBottom="@dimen/margin_normal"
-                        android:ems="10"
-                        android:hint="@string/hint_employeeId"
+                        android:drawableLeft="@mipmap/ic_user"
+                        android:singleLine="true"
+                        android:hint="Employee ID"
                         android:inputType="number"
-                        android:padding="@dimen/padding_normal"
-                        android:singleLine="true">
-
-
-                    </EditText>
-
+                        android:drawablePadding="7dp"
+                        android:imeOptions="actionNext"
+                        android:nextFocusDown="@+id/email"
+                        />
                 </android.support.design.widget.TextInputLayout>
 
                 <android.support.design.widget.TextInputLayout
-                    android:id="@+id/emp_name"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
 
-                    <EditText
+                    <AutoCompleteTextView
                         android:id="@+id/editTextLoginName"
-                        android:layout_width="fill_parent"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginBottom="@dimen/margin_normal"
-                        android:ems="10"
-                        android:hint="@string/hint_name"
-                        android:padding="@dimen/padding_normal"
-                        android:singleLine="true" />
-                </android.support.design.widget.TextInputLayout>
-
-                <android.support.design.widget.TextInputLayout
-                    android:id="@+id/emp_email"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-
-
-                    <EditText
-                        android:id="@+id/editTextLoginEmail"
-                        android:layout_width="fill_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginBottom="@dimen/margin_normal"
-                        android:ems="10"
-                        android:hint="@string/hint_email"
+                        android:hint="Full Name"
                         android:inputType="textEmailAddress"
-                        android:padding="@dimen/padding_normal"
-                        android:singleLine="true" />
+                        android:maxLines="1"
+                        android:singleLine="true"
+                        android:drawableLeft="@mipmap/ic_avatar"
+                        android:drawablePadding="7dp"
+                        android:imeOptions="actionNext"
+                        />
+
                 </android.support.design.widget.TextInputLayout>
 
                 <android.support.design.widget.TextInputLayout
-                    android:id="@+id/emp_lg"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
 
-                    <EditText
-                        android:id="@+id/editTextLoginLg"
-                        android:layout_width="fill_parent"
+                    <AutoCompleteTextView
+                        android:id="@+id/editTextLoginEmail"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginBottom="@dimen/margin_low"
-                        android:ems="10"
-                        android:hint="@string/hint_lg"
-                        android:padding="@dimen/padding_normal"
-                        android:singleLine="true" />
+                        android:hint="Email (Official)"
+                        android:inputType="textEmailAddress"
+                        android:maxLines="1"
+                        android:singleLine="true"
+                        android:drawableLeft="@mipmap/ic_email"
+                        android:drawablePadding="7dp"
+                        android:imeOptions="actionNext"
+                        android:nextFocusDown="@+id/lg"
+                        />
+
+                </android.support.design.widget.TextInputLayout>
+
+                <android.support.design.widget.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <AutoCompleteTextView
+                        android:id="@+id/editTextLoginLg"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Learning Group (LG)"
+                        android:inputType="textEmailAddress"
+                        android:maxLines="1"
+                        android:singleLine="true"
+                        android:drawableLeft="@mipmap/ic_batch"
+                        android:drawablePadding="7dp"
+                        android:imeOptions="actionDone"
+                        />
 
                 </android.support.design.widget.TextInputLayout>
 
@@ -117,7 +132,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center_vertical"
-                    android:padding="@dimen/padding_normal">
+                    android:layout_marginTop="10dp">
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -134,20 +149,42 @@
                         tools:listitem="@android:layout/simple_spinner_dropdown_item" />
                 </LinearLayout>
 
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="right"
+                    android:paddingTop="5dp"
+                    android:text="Forgot Password?"
+                    android:visibility="gone"/>
+
+
                 <Button
                     style="@style/Base.Widget.AppCompat.Button.Colored"
-                    android:layout_width="match_parent"
+                    android:id="@+id/btn_sign_in"
+                    android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="15dp"
-                    android:background="@color/colorPrimary"
-                    android:onClick="login"
-                    android:text="@string/login"
-                    android:textColor="@color/colorTextInverse"
-                    android:textSize="18sp" />
-
+                    android:layout_margin="22dp"
+                    android:background="@color/colorAccent"
+                    android:text="Sign Up"
+                    android:textAllCaps="false"
+                    android:textColor="@color/md_white"
+                    android:textSize="18sp"
+                    android:onClick="login"/>
             </LinearLayout>
-        </android.support.v7.widget.CardView>
-    </LinearLayout>
+        </RelativeLayout>
+
+        <ImageButton
+            android:id="@+id/user_profile_photo"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_below="@+id/login_title"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/profile_image_background"
+            android:elevation="4dp"
+            android:src="@drawable/ic_avatar_2" />
+    </RelativeLayout>
+
 </ScrollView>
 
 

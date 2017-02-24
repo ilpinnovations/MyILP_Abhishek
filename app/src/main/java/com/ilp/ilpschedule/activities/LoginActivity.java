@@ -1,11 +1,13 @@
 package com.ilp.ilpschedule.activities;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.CardView;
 import android.util.Log;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.Toast;
@@ -48,6 +50,7 @@ public class LoginActivity extends AppCompatActivity {
     private Button loginBtn;
 
     private RequestQueue mRequestQueue;
+    private ProgressDialog pDialog;
 
     private View.OnClickListener loginBtnListener = new View.OnClickListener() {
         @Override
@@ -112,7 +115,10 @@ public class LoginActivity extends AppCompatActivity {
     };
 
     private void login(final Map<String, String> params, int empId, String lg, String email){
-        Util.showProgressDialog(LoginActivity.this);
+        pDialog.setCancelable(false);
+        pDialog.setIndeterminate(true);
+        pDialog.setMessage("Please wait..");
+        pDialog.show();
 
         String url = Constants.URL_LOGIN +
                 "?emp_id=" + empId +
@@ -126,7 +132,7 @@ public class LoginActivity extends AppCompatActivity {
                 new Response.Listener<JSONObject>() {
                     @Override
                     public void onResponse(JSONObject response) {
-                        Util.hideProgressDialog();
+                        pDialog.hide();
                         Log.i(TAG, "in onResponse");
                         Log.i(TAG, response.toString());
                         try {
@@ -176,9 +182,36 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     @Override
+    public void onDestroy() {
+        super.onDestroy();
+        if (pDialog != null) {
+            pDialog.dismiss();
+            pDialog = null;
+        }
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        if (pDialog == null){
+            pDialog = new ProgressDialog(this);
+        }
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        if (pDialog != null){
+            pDialog.dismiss();
+        }
+    }
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+
+//        pDialog.getWindow().setType(WindowManager.LayoutParams.TYPE_SYSTEM_ALERT);
 
         VolleyLog.DEBUG = true;
         mRequestQueue = Volley.newRequestQueue(getApplicationContext());

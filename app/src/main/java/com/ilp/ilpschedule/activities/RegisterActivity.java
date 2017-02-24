@@ -11,6 +11,7 @@ import android.telephony.TelephonyManager;
 import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
 import android.widget.EditText;
 import android.widget.Spinner;
 
@@ -34,7 +35,7 @@ public class RegisterActivity extends AppCompatActivity {
 
     public static final String TAG = "RegisterActivity";
     private Spinner locationSpinner;
-    private EditText editTextName, editTextEmail, editTextEmpId, editTextLg;
+    private AutoCompleteTextView editTextName, editTextEmail, editTextEmpId, editTextLg;
 
     private InstanceID instanceID;
     private ProgressDialog pDialog = null;
@@ -48,11 +49,11 @@ public class RegisterActivity extends AppCompatActivity {
                 R.layout.location_item, getResources().getStringArray(
                 R.array.locations));
 
-        editTextName = (EditText) findViewById(R.id.editTextLoginName);
-        editTextEmail = (EditText) findViewById(R.id.editTextLoginEmail);
-        editTextEmpId = (EditText) findViewById(R.id.editTextLoginEmployeeId);
+        editTextName = (AutoCompleteTextView) findViewById(R.id.editTextLoginName);
+        editTextEmail = (AutoCompleteTextView) findViewById(R.id.editTextLoginEmail);
+        editTextEmpId = (AutoCompleteTextView) findViewById(R.id.editTextLoginEmployeeId);
 
-        editTextLg = (EditText) findViewById(R.id.editTextLoginLg);
+        editTextLg = (AutoCompleteTextView) findViewById(R.id.editTextLoginLg);
 
         locationSpinner = ((Spinner) findViewById(R.id.spinnerLoginLocation));
         locationSpinner.setAdapter(locationAdapter);
@@ -68,8 +69,37 @@ public class RegisterActivity extends AppCompatActivity {
 
     }
 
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        if (pDialog != null) {
+            pDialog.dismiss();
+            pDialog = null;
+        }
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        if (pDialog == null){
+            pDialog = new ProgressDialog(this);
+        }
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        if (pDialog != null){
+            pDialog.dismiss();
+        }
+    }
+
     public void login(View view) {
-        Util.showProgressDialog(this);
+//        Util.showProgressDialog(this);
+
+        pDialog.setCancelable(false);
+        pDialog.setIndeterminate(true);
+        pDialog.setMessage("Please wait..");
 
         if (Util.hasInternetAccess(getApplicationContext())) {
             Employee emp = new Employee();
@@ -90,8 +120,9 @@ public class RegisterActivity extends AppCompatActivity {
 
             int errorId = Util.saveEmployee(getApplicationContext(), emp);
             if (errorId == Constants.EMP_ERRORS.NO_ERROR) {
-                Util.showProgressDialog(this);
+//                Util.showProgressDialog(this);
 
+                pDialog.show();
                 TelephonyManager manager = (TelephonyManager)getSystemService(Context.TELEPHONY_SERVICE);
                 String imei = "";
                 imei = manager.getDeviceId();
@@ -243,7 +274,8 @@ public class RegisterActivity extends AppCompatActivity {
                 Util.toast(getApplicationContext(),
                         getString(R.string.toast_reg_error));
             }
-            Util.hideProgressDialog();
+//            Util.hideProgressDialog();
+            pDialog.cancel();
         }
     }
 

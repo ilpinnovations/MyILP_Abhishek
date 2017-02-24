@@ -162,6 +162,7 @@ public class Util {
                 WORK_IN_PROGRESS = !WORK_IN_PROGRESS;
             } catch (Exception ex) {
                 Log.d(TAG, "Error");
+                ex.printStackTrace();
             }
 
         }

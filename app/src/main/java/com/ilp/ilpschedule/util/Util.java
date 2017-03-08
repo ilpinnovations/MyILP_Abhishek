@@ -19,8 +19,10 @@ import com.ilp.ilpschedule.model.Employee;
 import com.ilp.ilpschedule.model.ILPLocation;
 
 import java.net.URLEncoder;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 
 public class Util {
@@ -393,5 +395,64 @@ public class Util {
         SharedPreferences prefs = context.getSharedPreferences(Constants.GRAB_A_SEAT.PREFERENCES.NAME, Context.MODE_PRIVATE);
 
         prefs.edit().clear().apply();
+    }
+
+    /**
+     * Helper method to provide the art resource id according to the weather condition id returned
+     * by the OpenWeatherMap call.
+     * @param weatherId from OpenWeatherMap API response
+     * @return resource id for the corresponding icon. -1 if no relation is found.
+     */
+    public static int getArtResourceForWeatherCondition(int weatherId) {
+        // Based on weather code data found at:
+        // http://bugs.openweathermap.org/projects/api/wiki/Weather_Condition_Codes
+        if (weatherId >= 200 && weatherId <= 232) {
+            return R.drawable.art_storm;
+        } else if (weatherId >= 300 && weatherId <= 321) {
+            return R.drawable.art_light_rain;
+        } else if (weatherId >= 500 && weatherId <= 504) {
+            return R.drawable.art_rain;
+        } else if (weatherId == 511) {
+            return R.drawable.art_snow;
+        } else if (weatherId >= 520 && weatherId <= 531) {
+            return R.drawable.art_rain;
+        } else if (weatherId >= 600 && weatherId <= 622) {
+            return R.drawable.art_snow;
+        } else if (weatherId >= 701 && weatherId <= 761) {
+            return R.drawable.art_fog;
+        } else if (weatherId == 761 || weatherId == 781) {
+            return R.drawable.art_storm;
+        } else if (weatherId == 800) {
+            return R.drawable.art_clear;
+        } else if (weatherId == 801) {
+            return R.drawable.art_light_clouds;
+        } else if (weatherId >= 802 && weatherId <= 804) {
+            return R.drawable.art_clouds;
+        }
+        return -1;
+    }
+
+    public static long utcToCurrentTime(long time){
+        // converting UTC to actual time
+        // time * 1000 + 5hr 30min
+        long currentTime = time * 1000 + ((5*60 + 30)* 60 * 10);
+        return currentTime;
+    }
+
+    public static double kelvinToCelsius(double temp){
+        // converting temperature in kelvin to celsius
+        // celsius = kelvin - 273.15
+
+        return temp - 273.15;
+    }
+
+    public static String formatWeatherTime(long time){
+
+        SimpleDateFormat formatter = new SimpleDateFormat("hh:mm a", Locale.US);
+
+        long sunriseTime = Util.utcToCurrentTime(time);
+        String formattedTime = formatter.format(sunriseTime);
+
+        return formattedTime;
     }
 }

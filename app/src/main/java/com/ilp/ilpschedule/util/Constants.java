@@ -226,4 +226,47 @@ public interface Constants {
 			String LOC_NAME = "Ahmedabad";
 		}
 	}
+
+	public interface ACTION_TYPES{
+		String WEATHER_INTENT = "weather_intent";
+		String INPUT_UNKNOWN = "input.unknown";
+	}
+
+	public interface SCHEDULE_INTENT{
+		String DATE_KEY = "date";
+	}
+
+	public interface WEATHER_API{
+		String BASE_URL = "http://api.openweathermap.org/";
+		String API_END_POINT = BASE_URL + "data/2.5/weather";
+
+		String TAG_WEATHER = "weather";
+		String TAG_WEATHER_ID = "id";
+		String TAG_WEATHER_MAIN = "main";
+		String TAG_MAIN = "main";
+		String TAG_MAIN_TEMP = "temp";
+		String TAG_MAIN_PRESSURE = "pressure";
+		String TAG_MAIN_HUMIDITY = "humidity";
+		String TAG_MAIN_TEMP_MIN = "temp_min";
+		String TAG_MAIN_TEMP_MAX = "temp_max";
+		String TAG_WIND = "wind";
+		String TAG_WIND_SPEED = "speed";
+		String TAG_SYS = "sys";
+		String TAG_SYS_SUNRISE = "sunrise";
+		String TAG_SYS_SUNSET = "sunset";
+		String TAG_NAME = "name";
+
+	}
+
+	public interface SEARCH_API{
+		String BASE_URL = "https://www.googleapis.com/customsearch/v1/";
+
+		String TAG_ITEMS = "items";
+		String TAG_ITEMS_TITLE = "title";
+		String TAG_ITEMS_LINK = "link";
+		String TAG_ITEMS_SNIPPET = "snippet";
+		String TAG_ITEMS_PAGEMAP = "pagemap";
+		String TAG_ITEMS_CSE_THUMBNAIL = "cse_thumbnail";
+		String TAG_ITEMS_SRC = "src";
+	}
 }

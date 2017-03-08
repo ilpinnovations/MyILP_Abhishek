@@ -120,6 +120,7 @@
     <string name="nav_locations">Locations</string>
     <string name="nav_contacts">Emergency Contacts</string>
     <string name="nav_fitForLife">Fit4Life</string>
+    <string name="nav_chat">ChatBot</string>
     <string name="nav_ar_learning">AR Learning</string>
     <string name="nav_rateus">Rate MY ILP</string>
     <string name="nav_feedback">Feedback</string>

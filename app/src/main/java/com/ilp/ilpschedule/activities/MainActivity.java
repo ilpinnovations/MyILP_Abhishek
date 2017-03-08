@@ -39,6 +39,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.common.api.GoogleApiClient;
+import com.ilp.ilpschedule.ChatActivity;
 import com.ilp.ilpschedule.R;
 import com.ilp.ilpschedule.db.DbHelper;
 import com.ilp.ilpschedule.fit4life.CalorieConsumed;
@@ -559,6 +560,10 @@ Log.d("---------","nav_daw");
         } else if (id == R.id.nav_rate_us) {
             position = 0;
             Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://play.google.com/store/apps/details?id=" + "com.ilp.ilpschedule" + "&hl=en"));
+            startActivity(intent);
+        } else if (id == R.id.nav_chat_bot) {
+            position = 0;
+            Intent intent = new Intent(MainActivity.this, ChatActivity.class);
             startActivity(intent);
         }
 

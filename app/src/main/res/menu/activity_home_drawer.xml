@@ -37,11 +37,6 @@
             android:icon="@drawable/ic_feedback"
             android:title="@string/nav_feedback" />
 
-        <!--<item
-            android:id="@+id/nav_fit_for_life"
-            android:icon="@drawable/walking"
-            android:title="@string/nav_fitForLife" />-->
-
         <item
             android:id="@+id/nav_ar_learning"
             android:icon="@drawable/andaricon"
@@ -51,6 +46,11 @@
             android:id="@+id/nav_rate_us"
             android:icon="@drawable/ic_rate"
             android:title="@string/nav_rateus" />
+
+        <item
+            android:id="@+id/nav_chat_bot"
+            android:icon="@mipmap/ic_chat"
+            android:title="@string/nav_chat" />
 
     </group>
 </menu>
